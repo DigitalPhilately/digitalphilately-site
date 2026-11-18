@@ -45,3 +45,6 @@ main > section { max-width: 1080px; margin: 0 auto; padding: 56px 24px; }
 .site-footer { background: var(--ink); color: #E4E6EE; padding: 32px 24px; text-align: center; }
 .site-footer a { color: var(--paper); font-weight: 600; }
 .site-footer .small { font-size: 0.85rem; color: var(--light); }
+.context h3 { margin-top: 1.6em; }
+.others { padding-left: 1.1em; }
+.others li { margin-bottom: 0.5em; }
