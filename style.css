@@ -48,3 +48,7 @@ main > section { max-width: 1080px; margin: 0 auto; padding: 56px 24px; }
 .context h3 { margin-top: 1.6em; }
 .others { padding-left: 1.1em; }
 .others li { margin-bottom: 0.5em; }
+.prose { max-width: 760px !important; }
+.prose h2 { margin-top: 1.6em; font-size: 1.3rem; }
+.site-footer .analytics-settings { color: var(--paper); font-weight: 600; }
+.prose .analytics-settings { color: var(--blue); }

@@ -42,4 +42,5 @@ def area_card(slug, title, body, projects):
 cards = "\n".join(area_card(*a) for a in AREAS)
 html = (ROOT / "template.html").read_text().replace("{{MARK}}", MARK).replace("{{AREAS}}", cards)
 (ROOT / "index.html").write_text(html)
+(ROOT / "privacy.html").write_text((ROOT / "privacy.template.html").read_text().replace("{{MARK}}", MARK))
 print("index.html written", len(html))
