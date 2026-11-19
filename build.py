@@ -1,4 +1,7 @@
 """Builds index.html from a template so the inline mark stays in step with mark.svg."""
+import html as _html
+import json
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -39,8 +42,36 @@ def area_card(slug, title, body, projects):
 {proj}</article>'''
 
 
+# Latest finds teaser: newest finds from the Barcoded Stamps catalogue.
+FINDS_SOURCE = ROOT.parent / "modern-gb-stamp-decoder/website/src/content/latest-finds.json"
+FINDS_COPY = ROOT / "latest-finds.json"
+FINDS_URL = "https://barcodedstamps.com/latest-finds/"
+STATUS = {"reported": "Reported", "corroborated": "Corroborated", "catalogued": "Catalogued", "available_in_app": "Available in app"}
+if FINDS_SOURCE.exists():
+    FINDS_COPY.write_text(FINDS_SOURCE.read_text())
+finds = json.loads(FINDS_COPY.read_text())
+finds.sort(key=lambda f: f["id"])
+finds.sort(key=lambda f: f["publishedAt"], reverse=True)
+
+
+def nice_date(d):
+    y, m, dd = map(int, d.split("-"))
+    return date(y, m, dd).strftime("%-d %b %Y")
+
+
+def find_item(f):
+    e = _html.escape
+    return (f'<li><a href="{FINDS_URL}#{e(f["id"])}">'
+            f'<span class="find-meta"><time datetime="{e(f["publishedAt"])}">{nice_date(f["publishedAt"])}</time> · {e(STATUS.get(f["status"], f["status"]))}</span>'
+            f'<strong>{e(f["title"])}</strong>'
+            f'<span class="find-detail">{e(f["encodedValue"])} · {e(f["sourceFormat"])}</span></a></li>')
+
+
+FINDS = "\n".join(find_item(f) for f in finds[:3])
+
+
 cards = "\n".join(area_card(*a) for a in AREAS)
-html = (ROOT / "template.html").read_text().replace("{{MARK}}", MARK).replace("{{AREAS}}", cards)
+html = (ROOT / "template.html").read_text().replace("{{MARK}}", MARK).replace("{{AREAS}}", cards).replace("{{FINDS}}", FINDS)
 (ROOT / "index.html").write_text(html)
 (ROOT / "privacy.html").write_text((ROOT / "privacy.template.html").read_text().replace("{{MARK}}", MARK))
 print("index.html written", len(html))
