@@ -63,3 +63,12 @@ main > section { max-width: 1080px; margin: 0 auto; padding: 56px 24px; }
 .find-detail { font-size: 0.9rem; color: var(--text); }
 .finds-more { margin-top: 1.2em; font-weight: 600; }
 .brand:hover { color: var(--royal); }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; align-items: center; }
+.hero-cover { margin: 0; }
+.hero-cover img { display: block; width: 100%; height: auto; border-radius: 6px; box-shadow: 0 1px 3px rgba(22,26,35,.08), 0 10px 30px rgba(22,26,35,.10); background: #fff; }
+.hero-cover figcaption { margin-top: 10px; font-size: 0.8rem; color: var(--text); text-align: center; }
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; gap: 28px; }
+  .hero-cover { max-width: 260px; margin: 0 auto; }
+}
