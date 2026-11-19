@@ -1,11 +1,14 @@
-"""Builds index.html from a template so the inline mark stays in step with mark.svg."""
+"""Builds index.html from a template so the inline mark stays in step with mark.svg.
+
+mark.svg is the header logo (magnifier over the Data Matrix, Nov 2026); its colour comes
+from .brand in style.css. mark-plain.svg / favicon.svg are the simpler mark for small sizes."""
 import html as _html
 import json
 from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).parent
-MARK = (ROOT / "mark.svg").read_text().replace('width="64" height="56"', 'width="40" height="35"').replace('fill="#161A23"', 'fill="currentColor"').replace('stroke="#161A23"', 'stroke="currentColor"')
+MARK = (ROOT / "mark.svg").read_text().replace('width="64" height="56"', 'width="52" height="45"').replace('#161A23', 'currentColor').replace('#2B3A9E', 'currentColor')
 
 AREAS = [
     ("identify", "Digital identification",

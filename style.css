@@ -1,5 +1,6 @@
 :root {
   --ink: #161A23;
+  --royal: #2B3A9E;
   --blue: #4A55C9;
   --light: #9AA3FF;
   --paper: #FFFFFF;
@@ -20,7 +21,7 @@ h3 { font-size: 1.1rem; font-weight: 700; margin: 0 0 0.5em; }
 main > section { max-width: 1080px; margin: 0 auto; padding: 56px 24px; }
 
 .site-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 18px 24px; max-width: 1080px; margin: 0 auto; }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--royal); }
 .brand span { font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.05rem; }
 .site-header nav { display: flex; gap: 20px; flex-wrap: wrap; }
 .site-header nav a { text-decoration: none; color: var(--text); font-weight: 500; }
@@ -61,3 +62,4 @@ main > section { max-width: 1080px; margin: 0 auto; padding: 56px 24px; }
 .find-list strong { font-family: var(--display); font-size: 1rem; line-height: 1.3; }
 .find-detail { font-size: 0.9rem; color: var(--text); }
 .finds-more { margin-top: 1.2em; font-weight: 600; }
+.brand:hover { color: var(--royal); }
